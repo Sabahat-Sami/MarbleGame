@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {   
-    public float speed = 1f;
+    public float speed = 500;
     Rigidbody _rigidBody;
     public GameObject focalPoint;
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class PlayerMove : MonoBehaviour
         float xspeed = Input.GetAxis("Horizontal") * speed;
         // _rigidBody.AddForce(new Vector3(xspeed,0,zspeed));
         _rigidBody.AddForce(focalPoint.transform.forward * zspeed);
+        print(        focalPoint.transform.forward * zspeed);
         _rigidBody.AddForce(focalPoint.transform.right * xspeed);
 
         if(transform.position.y < -5){
