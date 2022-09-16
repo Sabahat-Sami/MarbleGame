@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {   
-    public float speed = 10;
+    public float speed = 1f;
     Rigidbody _rigidBody;
+    public GameObject focalPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +19,14 @@ public class PlayerMove : MonoBehaviour
     {   
         float zspeed = Input.GetAxis("Vertical") * speed;
         float xspeed = Input.GetAxis("Horizontal") * speed;
-        _rigidBody.AddForce(new Vector3(xspeed,0,zspeed));
-        if(Input.GetAxis("Horizontal") != 0){
-            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)){
-                print("Rotating");
-                transform.Rotate(new Vector3(transform.rotation.x, 270, transform.rotation.z));
-            }
-            else if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)){
-                transform.Rotate(new Vector3(transform.rotation.x, 90, transform.rotation.z));
-            }
+        // _rigidBody.AddForce(new Vector3(xspeed,0,zspeed));
+        _rigidBody.AddForce(focalPoint.transform.forward * zspeed);
+        _rigidBody.AddForce(focalPoint.transform.right * xspeed);
+
+        if(transform.position.y < -5){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
     }
-    }
+    
 }

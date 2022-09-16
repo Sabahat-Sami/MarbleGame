@@ -5,32 +5,44 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     Transform playerTrans;
+    Transform frontCameraTrans;
+    Transform rearCameraTrans;
+
+    GameObject mainCamera;
+    GameObject rearCamera;
     Vector3 offSet;
-    float turnSpeed = 5;
+    float smoothSpeed = 0.1f;
     bool wasSpacePressed = false;
+  
     // Start is called before the first frame update
     void Start()
     {
      playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-     offSet = transform.position - playerTrans.position;
+     frontCameraTrans = GameObject.FindGameObjectWithTag("MainCamera").transform;
+     rearCameraTrans = GameObject.FindGameObjectWithTag("RearCamera").transform;
+     mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+     rearCamera = GameObject.FindGameObjectWithTag("RearCamera");
+     rearCamera.SetActive(false);
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = playerTrans.position +  offSet;
-        
-        if(Input.GetKeyDown(KeyCode.A)){
-            transform.Rotate(new Vector3(0, 90, 0));
-        }
+
+        transform.position = playerTrans.position;
+        rearCameraTrans.position = playerTrans.position;
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + Input.GetAxis("Horizontal") * 0.1f, 0);
+       
         if(Input.GetKeyDown(KeyCode.Space)){
-            transform.Rotate(new Vector3(0, 180, 0));
+            rearCamera.SetActive(true);
+            mainCamera.SetActive(false);
             wasSpacePressed = true;
         }
         if(Input.GetKeyUp(KeyCode.Space) && wasSpacePressed){
-            transform.Rotate(new Vector3(0, 180, 0));
+            rearCamera.SetActive(false);
+            mainCamera.SetActive(true);
             wasSpacePressed = false;
         }
     }
-
+      
 }

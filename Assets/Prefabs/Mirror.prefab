@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3971883012313952877}
   - component: {fileID: 2561966086292492365}
   - component: {fileID: 2622749492308135167}
+  - component: {fileID: 9215767223136052099}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab100624dd4e25c43a0750730b613d79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,11 +94,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4604404223775091788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9215767223136052099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604404223775091788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7c3f695698bd94286332f28ba8b4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Level2
 --- !u!1 &5200294521701075552
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2472792036617287779}
   - component: {fileID: 1190121985970341342}
-  - component: {fileID: 3397043620954338123}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -164,7 +177,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 720fcbc232b340b45ae8c6792977de9d, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -174,11 +187,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3397043620954338123
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200294521701075552}
-  m_Enabled: 1

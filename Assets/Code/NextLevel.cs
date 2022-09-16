@@ -7,7 +7,7 @@ public class NextLevel : MonoBehaviour
 {
     public string levelName = "Level1";
     private void OnTriggerEnter(Collider other){
-        if(other.tag == "Player"){
+        if(other.CompareTag("Player")){
             SceneManager.LoadScene(levelName);
         }
     }
