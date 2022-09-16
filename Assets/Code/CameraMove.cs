@@ -31,7 +31,7 @@ public class CameraMove : MonoBehaviour
 
         transform.position = playerTrans.position;
         rearCameraTrans.position = playerTrans.position;
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + Input.GetAxis("Horizontal") * 1f, 0);
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + Input.GetAxis("Horizontal") * .5f, 0);
        
         if(Input.GetKeyDown(KeyCode.Space)){
             rearCamera.SetActive(true);
